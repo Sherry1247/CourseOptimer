@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourseOptimizer - Smart University Course Planning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 20px 0;
+        }
+
+        .nav-logo span {
+            color: #4CAF50;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 25px 20px;
+            display: block;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Banner Section */
+        .banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .banner strong {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #c5050c 0%, #9c0409 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            opacity: 0.85;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: white;
+            color: #c5050c;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: #c5050c;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 20px;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #c5050c;
+        }
+
+        /* About Section */
+        .about {
+            background: #f9f9f9;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        /* Courses Interactive Section */
+        .courses {
+            background: white;
+        }
+
+        .university-selector {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .university-selector h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .university-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .uni-button {
+            padding: 15px 30px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .uni-button:hover {
+            border-color: #c5050c;
+            background: #fff5f5;
+        }
+
+        .uni-button.active {
+            background: #c5050c;
+            color: white;
+            border-color: #c5050c;
+        }
+
+        .course-showcase {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .course-showcase.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .majors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .major-card {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #c5050c;
+            transition: transform 0.3s;
+        }
+
+        .major-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .major-card h4 {
+            color: #c5050c;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .major-card ul {
+            list-style-position: inside;
+            color: #666;
+            line-height: 2;
+        }
+
+        /* Future Path Section */
+        .future-path {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .future-path h2 {
+            color: white;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .partner-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .partner-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .partner-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .partner-card h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .partner-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .partner-link:hover {
+            background: #ffd700;
+            color: #333;
+        }
+
+        /* Advising Section */
+        .advising {
+            background: #f0f8ff;
+        }
+
+        .advising-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .advising-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .advising-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .advising-card h4 {
+            color: #c5050c;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .advising-links {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .advising-links li {
+            margin-bottom: 10px;
+        }
+
+        .advising-links a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .advising-links a:hover {
+            color: #2e7d32;
+            text-decoration: underline;
+        }
+
+        /* Demo Section */
+        .demo {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .demo h2 {
+            color: white;
+        }
+
+        .demo-video {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .demo-placeholder {
+            background: #f0f0f0;
+            padding: 100px;
+            border-radius: 10px;
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1a1a;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                border-bottom: 1px solid #333;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Banner -->
+    <div class="banner">
+        🌍 <strong>Partnering with universities worldwide</strong> | 
+        🎓 Currently featuring <strong>UW-Madison</strong> demo
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                Course<span>Optimizer</span>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#future-path">Future Path</a></li>
+                <li><a href="#advising">Advising</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="https://github.com/Sherry1247/CourseOptimer" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>🎓 CourseOptimizer</h1>
+        <p class="tagline">Smart Course Planning for Universities Worldwide</p>
+        <p class="subtitle">Intelligent scheduling • Double major optimization • Career path guidance</p>
+        <div class="cta-buttons">
+            <a href="#demo" class="cta-button">Try Demo →</a>
+            <a href="https://github.com/Sherry1247/CourseOptimer" class="cta-button secondary">View on GitHub</a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About CourseOptimizer</h2>
+            <div class="about-content">
+                <p>
+                    <strong>CourseOptimizer</strong> is a universal course planning platform designed to work with 
+                    <strong>any university worldwide</strong>. Our intelligent algorithms adapt to different academic 
+                    structures, credit systems, and graduation requirements.
+                </p>
+                <p>
+                    For this demo, we're showcasing our capabilities with <strong>UW-Madison</strong>, 
+                    demonstrating how we solve complex scheduling challenges for double majors, 
+                    minors, and diverse academic paths.
+                </p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Universities Ready</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Courses Analyzed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Time Saved</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">4.8★</div>
+                    <div class="stat-label">User Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section (Interactive) -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <h2>Explore Course Programs</h2>
+
+            <div class="university-selector">
+                <h3>Select a University:</h3>
+                <div class="university-buttons">
+                    <button class="uni-button active" onclick="showUniversity('uw-madison')">
+                        🦡 UW-Madison
+                    </button>
+                    <button class="uni-button" onclick="showUniversity('coming-soon')">
+                        🔜 More Coming Soon
+                    </button>
+                </div>
+            </div>
+
+            <!-- UW-Madison Content -->
+            <div id="uw-madison" class="course-showcase active">
+                <h3 style="text-align: center; margin-bottom: 30px; color: #c5050c;">
+                    University of Wisconsin-Madison
+                </h3>
+                <div class="majors-grid">
+                    <div class="major-card">
+                        <h4>💻 Computer Sciences</h4>
+                        <ul>
+                            <li>CS 200: Programming I</li>
+                            <li>CS 300: Programming II</li>
+                            <li>CS 400: Programming III</li>
+                            <li>CS 354: Machine Organization</li>
+                            <li>CS 540: Artificial Intelligence</li>
+                        </ul>
+                    </div>
+
+                    <div class="major-card">
+                        <h4>📊 Economics</h4>
+                        <ul>
+                            <li>ECON 101: Microeconomics</li>
+                            <li>ECON 102: Macroeconomics</li>
+                            <li>ECON 310: Intermediate Micro</li>
