@@ -822,6 +822,7 @@
                         <div class="button-group">
                             <button class="btn btn-prev" onclick="prevStep()">← Back</button>
                             <button class="btn btn-submit" onclick="generateSchedule()">🚀 Generate My Schedule</button>
+
                         </div>
                     </div>
                 </div>
@@ -954,12 +955,20 @@
         }
 
         // Generate schedule
-        async function generateSchedule() {
-    // Collect form data from the HTML form
+async function generateSchedule() {
+
+    const majorMap = {
+        "Computer Sciences": "CS",
+        "Mathematics": "MATH",
+        "Data Science": "DS",
+        "Economics": "ECON",
+        "Business": "BUSINESS"
+    };
+
     const formData = {
         majorType: document.getElementById('majorType').value,
-        major1: document.getElementById('major1').value,
-        major2: document.getElementById('major2').value,
+        major1: majorMap[ document.getElementById('major1').value ] || "",
+        major2: majorMap[ document.getElementById('major2').value ] || "",
         targetGPA: parseFloat(document.getElementById('targetGPA').value),
         maxCredits: parseInt(document.getElementById('maxCredits').value),
         avoid8am: document.getElementById('avoid8am').checked,
@@ -969,24 +978,19 @@
         completedCourses: getCompletedCourses()
     };
 
-    // Show loading screen
     document.getElementById('demoForm').style.display = 'none';
     document.getElementById('loadingState').classList.add('show');
 
     try {
-        // === REAL API CALL ===
         const response = await fetch("http://localhost:8080/generate-plan", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
         });
 
-        const plan = await response.json();   // Get JSON from backend
-
-        // Hide loading
+        const plan = await response.json();
         document.getElementById('loadingState').classList.remove('show');
 
-        // Display backend results
         showBackendPlan(plan);
 
     } catch (err) {
@@ -994,6 +998,7 @@
         alert("Backend error: " + err);
     }
 }
+
 
         function showBackendPlan(plan) {
     const grid = document.getElementById("scheduleGrid");
@@ -1047,93 +1052,8 @@
             return courses;
         }
 
-        function displayResults(formData) {
-            // Generate mock schedule
-            const semesters = generateMockSchedule(formData);
-            
-            // Display schedule
-            const scheduleGrid = document.getElementById('scheduleGrid');
-            scheduleGrid.innerHTML = '';
+        
 
-            semesters.forEach(semester => {
-                const card = createSemesterCard(semester);
-                scheduleGrid.appendChild(card);
-            });
-
-            // Show results
-            document.getElementById('resultsContainer').classList.add('show');
-        }
-
-        function generateMockSchedule(formData) {
-            const major1Courses = {
-                'Computer Sciences': [
-                    { code: 'CS 200', name: 'Programming I', credits: 3, rating: 4.2 },
-                    { code: 'CS 300', name: 'Programming II', credits: 3, rating: 3.8 },
-                    { code: 'CS 400', name: 'Programming III', credits: 3, rating: 4.0 },
-                    { code: 'CS 354', name: 'Machine Organization', credits: 3, rating: 3.6 }
-                ],
-                'Economics': [
-                    { code: 'ECON 101', name: 'Microeconomics', credits: 3, rating: 4.5 },
-                    { code: 'ECON 102', name: 'Macroeconomics', credits: 3, rating: 4.3 },
-                    { code: 'ECON 310', name: 'Intermediate Micro', credits: 3, rating: 4.1 }
-                ]
-            };
-
-            const mathCourses = [
-                { code: 'MATH 221', name: 'Calculus I', credits: 5, rating: 3.9 },
-                { code: 'MATH 222', name: 'Calculus II', credits: 4, rating: 3.7 }
-            ];
-
-            const semesters = [
-                {
-                    name: 'Fall 2024',
-                    courses: [
-                        major1Courses[formData.major1][0],
-                        { code: 'MATH 221', name: 'Calculus I', credits: 5, rating: 3.9 },
-                        { code: 'ENGLISH 100', name: 'Composition', credits: 3, rating: 4.2 }
-                    ]
-                },
-                {
-                    name: 'Spring 2025',
-                    courses: [
-                        major1Courses[formData.major1][1],
-                        { code: 'MATH 222', name: 'Calculus II', credits: 4, rating: 3.7 },
-                        { code: 'HISTORY 101', name: 'World History', credits: 3, rating: 4.4 }
-                    ]
-                },
-                {
-                    name: 'Fall 2025',
-                    courses: [
-                        major1Courses[formData.major1][2],
-                        { code: 'PHIL 101', name: 'Introduction to Philosophy', credits: 3, rating: 4.0 },
-                        { code: 'CHEM 103', name: 'General Chemistry', credits: 4, rating: 3.5 }
-                    ]
-                },
-                {
-                    name: 'Spring 2026',
-                    courses: [
-                        major1Courses[formData.major1][3],
-                        { code: 'PSYCH 202', name: 'Intro to Psychology', credits: 3, rating: 4.6 },
-                        { code: 'COMM 104', name: 'Public Speaking', credits: 3, rating: 4.1 }
-                    ]
-                }
-            ];
-
-            // Add more semesters if needed
-            const years = parseInt(formData.years);
-            const totalSemesters = years * 2;
-
-            while (semesters.length < totalSemesters) {
-                semesters.push({
-                    name: `Semester ${semesters.length + 1}`,
-                    courses: [
-                        { code: 'ELEC ' + (semesters.length + 1), name: 'Elective Course', credits: 3, rating: 4.0 }
-                    ]
-                });
-            }
-
-            return semesters.slice(0, totalSemesters);
-        }
 
         function createSemesterCard(semester) {
             const card = document.createElement('div');
