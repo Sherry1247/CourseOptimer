@@ -177,293 +177,317 @@
             color: #c5050c;
         }
 
-        /* About Section */
-        .about {
-            background: #f9f9f9;
-        }
-
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .stat-box {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 3em;
-            font-weight: bold;
-            color: #4CAF50;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 1.1em;
-        }
-
-        /* Courses Interactive Section */
-        .courses {
-            background: white;
-        }
-
-        .university-selector {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .university-selector h3 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .university-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .uni-button {
-            padding: 15px 30px;
-            border: 2px solid #ddd;
-            background: white;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: all 0.3s;
-        }
-
-        .uni-button:hover {
-            border-color: #c5050c;
-            background: #fff5f5;
-        }
-
-        .uni-button.active {
-            background: #c5050c;
-            color: white;
-            border-color: #c5050c;
-        }
-
-        .course-showcase {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        .course-showcase.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .majors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .major-card {
-            background: #f9f9f9;
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 5px solid #c5050c;
-            transition: transform 0.3s;
-        }
-
-        .major-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .major-card h4 {
-            color: #c5050c;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .major-card ul {
-            list-style-position: inside;
-            color: #666;
-            line-height: 2;
-        }
-
-        /* Future Path Section */
-        .future-path {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .future-path h2 {
-            color: white;
-        }
-
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .partner-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .partner-card:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .partner-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
-
-        .partner-card h4 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
-        }
-
-        .partner-link {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: white;
-            color: #667eea;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .partner-link:hover {
-            background: #ffd700;
-            color: #333;
-        }
-
-        /* Advising Section */
-        .advising {
-            background: #f0f8ff;
-        }
-
-        .advising-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .advising-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .advising-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
-
-        .advising-card h4 {
-            color: #c5050c;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .advising-links {
-            list-style: none;
-            margin-top: 20px;
-        }
-
-        .advising-links li {
-            margin-bottom: 10px;
-        }
-
-        .advising-links a {
-            color: #4CAF50;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .advising-links a:hover {
-            color: #2e7d32;
-            text-decoration: underline;
-        }
-
-        /* Demo Section */
+        /* Demo Section - ENHANCED */
         .demo {
             background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white;
-            text-align: center;
         }
 
         .demo h2 {
             color: white;
         }
 
-        .demo-video {
-            max-width: 900px;
-            margin: 40px auto;
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .demo-form-wrapper {
             background: white;
-            padding: 30px;
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .step-indicator .step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+
+        .step-indicator .step.active {
+            background: #4CAF50;
+            color: white;
+            transform: scale(1.2);
+        }
+
+        .step-indicator .step.completed {
+            background: #c5050c;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-next {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-next:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-prev {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-prev:hover {
+            background: #d0d0d0;
+        }
+
+        .btn-submit {
+            background: #c5050c;
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background: #9c0409;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(197, 5, 12, 0.3);
+        }
+
+        /* Results Section */
+        .results-container {
+            display: none;
+            background: white;
+            color: #333;
+            padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .demo-placeholder {
-            background: #f0f0f0;
-            padding: 100px;
-            border-radius: 10px;
-            color: #666;
-            font-size: 1.2em;
+        .results-container.show {
+            display: block;
+            animation: fadeIn 0.5s;
         }
 
-        /* Footer */
-        footer {
-            background: #1a1a1a;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            padding: 25px;
+            border-radius: 15px;
             text-align: center;
-            padding: 40px 20px;
         }
 
-        footer a {
-            color: #4CAF50;
-            text-decoration: none;
+        .summary-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .summary-card .label {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .semester-card {
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .semester-card:hover {
+            border-color: #4CAF50;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .semester-header {
+            background: #c5050c;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .course-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .course-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+            transition: transform 0.2s;
+        }
+
+        .course-item:hover {
+            transform: translateX(5px);
+        }
+
+        .course-code {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .course-name {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .course-meta {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .semester-total {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #e0e0e0;
+            font-weight: 600;
+            text-align: center;
+            color: #c5050c;
         }
 
         /* Responsive */
@@ -494,15 +518,39 @@
                 font-size: 2.5em;
             }
 
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+            .schedule-grid {
+                grid-template-columns: 1fr;
             }
 
-            .cta-button {
-                width: 100%;
-                max-width: 300px;
+            .button-group {
+                flex-direction: column;
             }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -523,10 +571,7 @@
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#about">About</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#future-path">Future Path</a></li>
-                <li><a href="#advising">Advising</a></li>
-                <li><a href="#demo">Demo</a></li>
+                <li><a href="#demo">Try Demo</a></li>
                 <li><a href="https://github.com/Sherry1247/CourseOptimer" target="_blank">GitHub</a></li>
             </ul>
         </div>
@@ -538,7 +583,7 @@
         <p class="tagline">Smart Course Planning for Universities Worldwide</p>
         <p class="subtitle">Intelligent scheduling • Double major optimization • Career path guidance</p>
         <div class="cta-buttons">
-            <a href="#demo" class="cta-button">Try Demo →</a>
+            <a href="#demo" class="cta-button">Try UW-Madison Demo →</a>
             <a href="https://github.com/Sherry1247/CourseOptimer" class="cta-button secondary">View on GitHub</a>
         </div>
     </div>
@@ -547,77 +592,557 @@
     <section class="about" id="about">
         <div class="container">
             <h2>About CourseOptimizer</h2>
-            <div class="about-content">
-                <p>
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.2em; line-height: 1.8; margin-bottom: 20px; color: #555;">
                     <strong>CourseOptimizer</strong> is a universal course planning platform designed to work with 
                     <strong>any university worldwide</strong>. Our intelligent algorithms adapt to different academic 
                     structures, credit systems, and graduation requirements.
                 </p>
-                <p>
+                <p style="font-size: 1.2em; line-height: 1.8; margin-bottom: 20px; color: #555;">
                     For this demo, we're showcasing our capabilities with <strong>UW-Madison</strong>, 
                     demonstrating how we solve complex scheduling challenges for double majors, 
                     minors, and diverse academic paths.
                 </p>
             </div>
+        </div>
+    </section>
 
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Universities Ready</div>
+    <!-- Interactive Demo Section -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <h2>🚀 Try the Interactive Demo</h2>
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">
+                Plan your complete 4-year course schedule in 6 simple steps
+            </p>
+
+            <div class="demo-container">
+                <!-- Multi-Step Form -->
+                <div class="demo-form-wrapper" id="demoForm">
+                    <!-- Step Indicator -->
+                    <div class="step-indicator">
+                        <div class="step active" id="indicator1">1</div>
+                        <div class="step" id="indicator2">2</div>
+                        <div class="step" id="indicator3">3</div>
+                        <div class="step" id="indicator4">4</div>
+                        <div class="step" id="indicator5">5</div>
+                        <div class="step" id="indicator6">6</div>
+                    </div>
+
+                    <!-- Step 1: Major Selection -->
+                    <div class="form-step active" id="step1">
+                        <h3 style="margin-bottom: 20px; color: #c5050c;">📚 Step 1: What are you studying?</h3>
+                        
+                        <div class="form-group">
+                            <label>Select your major(s) and minor(s):</label>
+                            <select id="majorType" onchange="updateMajorFields()">
+                                <option value="">-- Choose your path --</option>
+                                <option value="single">Single Major</option>
+                                <option value="double">Double Major</option>
+                                <option value="major-minor">Major + Minor</option>
+                            </select>
+                        </div>
+
+                        <div id="majorFields" style="display: none;">
+                            <div class="form-group">
+                                <label>Primary Major:</label>
+                                <select id="major1">
+                                    <option value="">-- Select --</option>
+                                    <option value="Computer Sciences">Computer Sciences</option>
+                                    <option value="Economics">Economics</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Data Science">Data Science</option>
+                                    <option value="Business">Business</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="major2Field" style="display: none;">
+                                <label>Second Major / Minor:</label>
+                                <select id="major2">
+                                    <option value="">-- Select --</option>
+                                    <option value="Computer Sciences">Computer Sciences</option>
+                                    <option value="Economics">Economics</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Data Science">Data Science</option>
+                                    <option value="Business">Business</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-next" onclick="nextStep()">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Timeline -->
+                    <div class="form-step" id="step2">
+                        <h3 style="margin-bottom: 20px; color: #c5050c;">⏰ Step 2: What's your timeline?</h3>
+                        
+                        <div class="form-group">
+                            <label>How many years do you plan to graduate in?</label>
+                            <select id="years">
+                                <option value="3">3 Years (Accelerated)</option>
+                                <option value="4" selected>4 Years (Standard)</option>
+                                <option value="5">5 Years (Extended)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Starting semester:</label>
+                            <select id="startSemester">
+                                <option value="Fall 2024">Fall 2024</option>
+                                <option value="Spring 2025">Spring 2025</option>
+                                <option value="Fall 2025">Fall 2025</option>
+                            </select>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-prev" onclick="prevStep()">← Back</button>
+                            <button class="btn btn-next" onclick="nextStep()">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Current Credits -->
+                    <div class="form-step" id="step3">
+                        <h3 style="margin-bottom: 20px; color: #c5050c;">🎓 Step 3: What credits do you have?</h3>
+                        
+                        <div class="form-group">
+                            <label>Current academic standing:</label>
+                            <select id="standing">
+                                <option value="0">Freshman (0 credits)</option>
+                                <option value="30">Sophomore (30+ credits)</option>
+                                <option value="60">Junior (60+ credits)</option>
+                                <option value="90">Senior (90+ credits)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Exact number of completed credits:</label>
+                            <input type="number" id="currentCredits" min="0" max="150" value="0" placeholder="0">
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-prev" onclick="prevStep()">← Back</button>
+                            <button class="btn btn-next" onclick="nextStep()">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Completed Courses -->
+                    <div class="form-step" id="step4">
+                        <h3 style="margin-bottom: 20px; color: #c5050c;">✅ Step 4: What courses have you taken?</h3>
+                        
+                        <p style="margin-bottom: 20px; color: #666;">
+                            Select all prerequisite courses you've already completed:
+                        </p>
+
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="cs200" value="CS 200">
+                                <label for="cs200">CS 200 - Programming I</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="cs300" value="CS 300">
+                                <label for="cs300">CS 300 - Programming II</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="math221" value="MATH 221">
+                                <label for="math221">MATH 221 - Calculus I</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="math222" value="MATH 222">
+                                <label for="math222">MATH 222 - Calculus II</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="econ101" value="ECON 101">
+                                <label for="econ101">ECON 101 - Microeconomics</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="econ102" value="ECON 102">
+                                <label for="econ102">ECON 102 - Macroeconomics</label>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-prev" onclick="prevStep()">← Back</button>
+                            <button class="btn btn-next" onclick="nextStep()">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Goals & Preferences -->
+                    <div class="form-step" id="step5">
+                        <h3 style="margin-bottom: 20px; color: #c5050c;">🎯 Step 5: What are your goals?</h3>
+                        
+                        <div class="form-group">
+                            <label>Target GPA:</label>
+                            <input type="number" id="targetGPA" min="2.0" max="4.0" step="0.1" value="3.5" placeholder="3.5">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Maximum credits per semester:</label>
+                            <select id="maxCredits">
+                                <option value="12">12 credits (Light load)</option>
+                                <option value="15" selected>15 credits (Standard)</option>
+                                <option value="18">18 credits (Heavy load)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Preferred course difficulty:</label>
+                            <select id="difficulty">
+                                <option value="easy">Easy (Chill schedule)</option>
+                                <option value="balanced" selected>Balanced (Recommended)</option>
+                                <option value="challenging">Challenging (Ambitious)</option>
+                            </select>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-prev" onclick="prevStep()">← Back</button>
+                            <button class="btn btn-next" onclick="nextStep()">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Additional Preferences -->
+                    <div class="form-step" id="step6">
+                        <h3 style="margin-bottom: 20px; color: #c5050c;">⚙️ Step 6: Any preferences?</h3>
+                        
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="avoid8am">
+                                <label for="avoid8am">🌅 Avoid 8am classes</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="prioritizeRating">
+                                <label for="prioritizeRating">⭐ Prioritize highly-rated professors</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="prioritizeARate">
+                                <label for="prioritizeARate">📊 Focus on courses with high A rates</label>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-prev" onclick="prevStep()">← Back</button>
+                            <button class="btn btn-submit" onclick="generateSchedule()">🚀 Generate My Schedule</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number">10K+</div>
-                    <div class="stat-label">Courses Analyzed</div>
+
+                <!-- Loading State -->
+                <div class="loading" id="loadingState">
+                    <div class="spinner"></div>
+                    <h3>Generating your optimal course plan...</h3>
+                    <p>Analyzing prerequisites, balancing difficulty, and optimizing your schedule</p>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number">95%</div>
-                    <div class="stat-label">Time Saved</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">4.8★</div>
-                    <div class="stat-label">User Rating</div>
+
+                <!-- Results Display -->
+                <div class="results-container" id="resultsContainer">
+                    <h3 style="margin-bottom: 30px; color: #c5050c; text-align: center;">
+                        🎉 Your Personalized 4-Year Plan
+                    </h3>
+
+                    <!-- Summary Cards -->
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <div class="number" id="totalCredits">120</div>
+                            <div class="label">Total Credits</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="number" id="avgCredits">15</div>
+                            <div class="label">Avg Credits/Semester</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="number" id="overlapCourses">4</div>
+                            <div class="label">Overlapping Courses</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="number" id="savedCredits">12</div>
+                            <div class="label">Credits Saved</div>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Grid -->
+                    <div class="schedule-grid" id="scheduleGrid">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+
+                    <div style="text-align: center; margin-top: 40px;">
+                        <button class="btn btn-submit" onclick="resetForm()">
+                            ← Start Over
+                        </button>
+                        <button class="btn btn-next" onclick="downloadSchedule()" style="margin-left: 15px;">
+                            📥 Download Schedule
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Courses Section (Interactive) -->
-    <section class="courses" id="courses">
+    <!-- Footer -->
+    <footer style="background: #1a1a1a; color: white; text-align: center; padding: 40px 20px;">
         <div class="container">
-            <h2>Explore Course Programs</h2>
+            <h3>🌍 CourseOptimizer</h3>
+            <p style="margin: 20px 0;">
+                Making university course planning intelligent, efficient, and accessible worldwide
+            </p>
+            <p>
+                <a href="https://github.com/Sherry1247/CourseOptimer" target="_blank" style="color: #4CAF50; text-decoration: none;">
+                    GitHub
+                </a> | 
+                <a href="#about" style="color: #4CAF50; text-decoration: none;">About</a>
+            </p>
+            <p style="margin-top: 30px; font-size: 0.9em; color: #999;">
+                © 2024 CourseOptimizer | Built for Hackathon with ❤️
+            </p>
+        </div>
+    </footer>
 
-            <div class="university-selector">
-                <h3>Select a University:</h3>
-                <div class="university-buttons">
-                    <button class="uni-button active" onclick="showUniversity('uw-madison')">
-                        🦡 UW-Madison
-                    </button>
-                    <button class="uni-button" onclick="showUniversity('coming-soon')">
-                        🔜 More Coming Soon
-                    </button>
-                </div>
-            </div>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
 
-            <!-- UW-Madison Content -->
-            <div id="uw-madison" class="course-showcase active">
-                <h3 style="text-align: center; margin-bottom: 30px; color: #c5050c;">
-                    University of Wisconsin-Madison
-                </h3>
-                <div class="majors-grid">
-                    <div class="major-card">
-                        <h4>💻 Computer Sciences</h4>
-                        <ul>
-                            <li>CS 200: Programming I</li>
-                            <li>CS 300: Programming II</li>
-                            <li>CS 400: Programming III</li>
-                            <li>CS 354: Machine Organization</li>
-                            <li>CS 540: Artificial Intelligence</li>
-                        </ul>
-                    </div>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
 
-                    <div class="major-card">
-                        <h4>📊 Economics</h4>
-                        <ul>
-                            <li>ECON 101: Microeconomics</li>
-                            <li>ECON 102: Macroeconomics</li>
-                            <li>ECON 310: Intermediate Micro</li>
+        // Update major fields based on selection
+        function updateMajorFields() {
+            const majorType = document.getElementById('majorType').value;
+            const majorFields = document.getElementById('majorFields');
+            const major2Field = document.getElementById('major2Field');
+
+            if (majorType) {
+                majorFields.style.display = 'block';
+                if (majorType === 'double' || majorType === 'major-minor') {
+                    major2Field.style.display = 'block';
+                } else {
+                    major2Field.style.display = 'none';
+                }
+            } else {
+                majorFields.style.display = 'none';
+            }
+        }
+
+        // Navigation functions
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                // Hide current step
+                document.getElementById('step' + currentStep).classList.remove('active');
+                document.getElementById('indicator' + currentStep).classList.remove('active');
+                document.getElementById('indicator' + currentStep).classList.add('completed');
+
+                // Show next step
+                currentStep++;
+                document.getElementById('step' + currentStep).classList.add('active');
+                document.getElementById('indicator' + currentStep).classList.add('active');
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                // Hide current step
+                document.getElementById('step' + currentStep).classList.remove('active');
+                document.getElementById('indicator' + currentStep).classList.remove('active');
+
+                // Show previous step
+                currentStep--;
+                document.getElementById('step' + currentStep).classList.add('active');
+                document.getElementById('indicator' + currentStep).classList.add('active');
+                document.getElementById('indicator' + currentStep).classList.remove('completed');
+            }
+        }
+
+        // Generate schedule
+        function generateSchedule() {
+            // Collect form data
+            const formData = {
+                majorType: document.getElementById('majorType').value,
+                major1: document.getElementById('major1').value,
+                major2: document.getElementById('major2').value,
+                years: document.getElementById('years').value,
+                startSemester: document.getElementById('startSemester').value,
+                currentCredits: document.getElementById('currentCredits').value,
+                targetGPA: document.getElementById('targetGPA').value,
+                maxCredits: document.getElementById('maxCredits').value,
+                difficulty: document.getElementById('difficulty').value,
+                completedCourses: getCompletedCourses()
+            };
+
+            // Show loading
+            document.getElementById('demoForm').style.display = 'none';
+            document.getElementById('loadingState').classList.add('show');
+
+            // Simulate API call
+            setTimeout(() => {
+                document.getElementById('loadingState').classList.remove('show');
+                displayResults(formData);
+            }, 2000);
+        }
+
+        function getCompletedCourses() {
+            const courses = [];
+            const checkboxes = document.querySelectorAll('#step4 input[type="checkbox"]:checked');
+            checkboxes.forEach(cb => courses.push(cb.value));
+            return courses;
+        }
+
+        function displayResults(formData) {
+            // Generate mock schedule
+            const semesters = generateMockSchedule(formData);
+            
+            // Display schedule
+            const scheduleGrid = document.getElementById('scheduleGrid');
+            scheduleGrid.innerHTML = '';
+
+            semesters.forEach(semester => {
+                const card = createSemesterCard(semester);
+                scheduleGrid.appendChild(card);
+            });
+
+            // Show results
+            document.getElementById('resultsContainer').classList.add('show');
+        }
+
+        function generateMockSchedule(formData) {
+            const major1Courses = {
+                'Computer Sciences': [
+                    { code: 'CS 200', name: 'Programming I', credits: 3, rating: 4.2 },
+                    { code: 'CS 300', name: 'Programming II', credits: 3, rating: 3.8 },
+                    { code: 'CS 400', name: 'Programming III', credits: 3, rating: 4.0 },
+                    { code: 'CS 354', name: 'Machine Organization', credits: 3, rating: 3.6 }
+                ],
+                'Economics': [
+                    { code: 'ECON 101', name: 'Microeconomics', credits: 3, rating: 4.5 },
+                    { code: 'ECON 102', name: 'Macroeconomics', credits: 3, rating: 4.3 },
+                    { code: 'ECON 310', name: 'Intermediate Micro', credits: 3, rating: 4.1 }
+                ]
+            };
+
+            const mathCourses = [
+                { code: 'MATH 221', name: 'Calculus I', credits: 5, rating: 3.9 },
+                { code: 'MATH 222', name: 'Calculus II', credits: 4, rating: 3.7 }
+            ];
+
+            const semesters = [
+                {
+                    name: 'Fall 2024',
+                    courses: [
+                        major1Courses[formData.major1][0],
+                        { code: 'MATH 221', name: 'Calculus I', credits: 5, rating: 3.9 },
+                        { code: 'ENGLISH 100', name: 'Composition', credits: 3, rating: 4.2 }
+                    ]
+                },
+                {
+                    name: 'Spring 2025',
+                    courses: [
+                        major1Courses[formData.major1][1],
+                        { code: 'MATH 222', name: 'Calculus II', credits: 4, rating: 3.7 },
+                        { code: 'HISTORY 101', name: 'World History', credits: 3, rating: 4.4 }
+                    ]
+                },
+                {
+                    name: 'Fall 2025',
+                    courses: [
+                        major1Courses[formData.major1][2],
+                        { code: 'PHIL 101', name: 'Introduction to Philosophy', credits: 3, rating: 4.0 },
+                        { code: 'CHEM 103', name: 'General Chemistry', credits: 4, rating: 3.5 }
+                    ]
+                },
+                {
+                    name: 'Spring 2026',
+                    courses: [
+                        major1Courses[formData.major1][3],
+                        { code: 'PSYCH 202', name: 'Intro to Psychology', credits: 3, rating: 4.6 },
+                        { code: 'COMM 104', name: 'Public Speaking', credits: 3, rating: 4.1 }
+                    ]
+                }
+            ];
+
+            // Add more semesters if needed
+            const years = parseInt(formData.years);
+            const totalSemesters = years * 2;
+
+            while (semesters.length < totalSemesters) {
+                semesters.push({
+                    name: `Semester ${semesters.length + 1}`,
+                    courses: [
+                        { code: 'ELEC ' + (semesters.length + 1), name: 'Elective Course', credits: 3, rating: 4.0 }
+                    ]
+                });
+            }
+
+            return semesters.slice(0, totalSemesters);
+        }
+
+        function createSemesterCard(semester) {
+            const card = document.createElement('div');
+            card.className = 'semester-card';
+
+            const header = document.createElement('div');
+            header.className = 'semester-header';
+            header.textContent = semester.name;
+            card.appendChild(header);
+
+            const courseList = document.createElement('div');
+            courseList.className = 'course-list';
+
+            let totalCredits = 0;
+            semester.courses.forEach(course => {
+                const courseItem = document.createElement('div');
+                courseItem.className = 'course-item';
+                courseItem.innerHTML = `
+                    <div class="course-code">${course.code}</div>
+                    <div class="course-name">${course.name}</div>
+                    <div class="course-meta">${course.credits} credits • ⭐ ${course.rating}</div>
+                `;
+                courseList.appendChild(courseItem);
+                totalCredits += course.credits;
+            });
+
+            card.appendChild(courseList);
+
+            const total = document.createElement('div');
+            total.className = 'semester-total';
+            total.textContent = `Total: ${totalCredits} credits`;
+            card.appendChild(total);
+
+            return card;
+        }
+
+        function resetForm() {
+            currentStep = 1;
+            document.getElementById('resultsContainer').classList.remove('show');
+            document.getElementById('demoForm').style.display = 'block';
+            
+            // Reset all steps
+            for (let i = 1; i <= totalSteps; i++) {
+                document.getElementById('step' + i).classList.remove('active');
+                document.getElementById('indicator' + i).classList.remove('active', 'completed');
+            }
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('indicator1').classList.add('active');
+        }
+
+        function downloadSchedule() {
+            alert('Download feature coming soon! You can take a screenshot for now.');
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
