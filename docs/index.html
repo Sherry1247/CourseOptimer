@@ -625,7 +625,6 @@
                         <div class="step" id="indicator3">3</div>
                         <div class="step" id="indicator4">4</div>
                         <div class="step" id="indicator5">5</div>
-                        <div class="step" id="indicator6">6</div>
                     </div>
 
                     <!-- Step 1: Major Selection -->
@@ -726,49 +725,10 @@
                         </div>
                     </div>
 
-                    <!-- Step 4: Completed Courses -->
-                    <div class="form-step" id="step4">
-                        <h3 style="margin-bottom: 20px; color: #c5050c;">✅ Step 4: What courses have you taken?</h3>
-                        
-                        <p style="margin-bottom: 20px; color: #666;">
-                            Select all prerequisite courses you've already completed:
-                        </p>
-
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="cs200" value="CS 200">
-                                <label for="cs200">CS 200 - Programming I</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="cs300" value="CS 300">
-                                <label for="cs300">CS 300 - Programming II</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="math221" value="MATH 221">
-                                <label for="math221">MATH 221 - Calculus I</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="math222" value="MATH 222">
-                                <label for="math222">MATH 222 - Calculus II</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="econ101" value="ECON 101">
-                                <label for="econ101">ECON 101 - Microeconomics</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="econ102" value="ECON 102">
-                                <label for="econ102">ECON 102 - Macroeconomics</label>
-                            </div>
-                        </div>
-
-                        <div class="button-group">
-                            <button class="btn btn-prev" onclick="prevStep()">← Back</button>
-                            <button class="btn btn-next" onclick="nextStep()">Next →</button>
-                        </div>
-                    </div>
+                   
 
                     <!-- Step 5: Goals & Preferences -->
-                    <div class="form-step" id="step5">
+                    <div class="form-step" id="step4">
                         <h3 style="margin-bottom: 20px; color: #c5050c;">🎯 Step 5: What are your goals?</h3>
                         
                         <div class="form-group">
@@ -801,7 +761,7 @@
                     </div>
 
                     <!-- Step 6: Additional Preferences -->
-                    <div class="form-step" id="step6">
+                    <div class="form-step" id="step5">
                         <h3 style="margin-bottom: 20px; color: #c5050c;">⚙️ Step 6: Any preferences?</h3>
                         
                         <div class="checkbox-group">
@@ -822,6 +782,7 @@
                         <div class="button-group">
                             <button class="btn btn-prev" onclick="prevStep()">← Back</button>
                             <button class="btn btn-submit" onclick="generateSchedule()">🚀 Generate My Schedule</button>
+
                         </div>
                     </div>
                 </div>
@@ -898,7 +859,7 @@
 
     <script>
         let currentStep = 1;
-        const totalSteps = 6;
+        const totalSteps = 5;
 
         // Mobile menu toggle
         function toggleMenu() {
@@ -954,126 +915,96 @@
         }
 
         // Generate schedule
-        function generateSchedule() {
-            // Collect form data
-            const formData = {
-                majorType: document.getElementById('majorType').value,
-                major1: document.getElementById('major1').value,
-                major2: document.getElementById('major2').value,
-                years: document.getElementById('years').value,
-                startSemester: document.getElementById('startSemester').value,
-                currentCredits: document.getElementById('currentCredits').value,
-                targetGPA: document.getElementById('targetGPA').value,
-                maxCredits: document.getElementById('maxCredits').value,
-                difficulty: document.getElementById('difficulty').value,
-                completedCourses: getCompletedCourses()
-            };
+async function generateSchedule() {
 
-            // Show loading
-            document.getElementById('demoForm').style.display = 'none';
-            document.getElementById('loadingState').classList.add('show');
+    const majorMap = {
+        "Computer Sciences": "CS",
+        "Mathematics": "MATH",
+        "Data Science": "DS",
+        "Economics": "ECON",
+        "Business": "BUSINESS"
+    };
 
-            // Simulate API call
-            setTimeout(() => {
-                document.getElementById('loadingState').classList.remove('show');
-                displayResults(formData);
-            }, 2000);
-        }
+    const formData = {
+        majorType: document.getElementById('majorType').value,
+        major1: majorMap[ document.getElementById('major1').value ] || "",
+        major2: majorMap[ document.getElementById('major2').value ] || "",
+        targetGPA: parseFloat(document.getElementById('targetGPA').value),
+        maxCredits: parseInt(document.getElementById('maxCredits').value),
+        avoid8am: document.getElementById('avoid8am').checked,
+        prioritizeGPA: document.getElementById('prioritizeRating').checked,
+        balanceDifficulty: document.getElementById('difficulty').value === 'balanced',
+        careerGoal: "industry",
+        completedCourses: []
+    };
 
-        function getCompletedCourses() {
-            const courses = [];
-            const checkboxes = document.querySelectorAll('#step4 input[type="checkbox"]:checked');
-            checkboxes.forEach(cb => courses.push(cb.value));
-            return courses;
-        }
+    document.getElementById('demoForm').style.display = 'none';
+    document.getElementById('loadingState').classList.add('show');
 
-        function displayResults(formData) {
-            // Generate mock schedule
-            const semesters = generateMockSchedule(formData);
-            
-            // Display schedule
-            const scheduleGrid = document.getElementById('scheduleGrid');
-            scheduleGrid.innerHTML = '';
+    try {
+        const response = await fetch("http://localhost:8080/generate-plan", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
 
-            semesters.forEach(semester => {
-                const card = createSemesterCard(semester);
-                scheduleGrid.appendChild(card);
-            });
+        const plan = await response.json();
+        document.getElementById('loadingState').classList.remove('show');
 
-            // Show results
-            document.getElementById('resultsContainer').classList.add('show');
-        }
+        showBackendPlan(plan);
 
-        function generateMockSchedule(formData) {
-            const major1Courses = {
-                'Computer Sciences': [
-                    { code: 'CS 200', name: 'Programming I', credits: 3, rating: 4.2 },
-                    { code: 'CS 300', name: 'Programming II', credits: 3, rating: 3.8 },
-                    { code: 'CS 400', name: 'Programming III', credits: 3, rating: 4.0 },
-                    { code: 'CS 354', name: 'Machine Organization', credits: 3, rating: 3.6 }
-                ],
-                'Economics': [
-                    { code: 'ECON 101', name: 'Microeconomics', credits: 3, rating: 4.5 },
-                    { code: 'ECON 102', name: 'Macroeconomics', credits: 3, rating: 4.3 },
-                    { code: 'ECON 310', name: 'Intermediate Micro', credits: 3, rating: 4.1 }
-                ]
-            };
+    } catch (err) {
+        console.error("Error calling backend:", err);
+        alert("Backend error: " + err);
+    }
+}
 
-            const mathCourses = [
-                { code: 'MATH 221', name: 'Calculus I', credits: 5, rating: 3.9 },
-                { code: 'MATH 222', name: 'Calculus II', credits: 4, rating: 3.7 }
-            ];
 
-            const semesters = [
-                {
-                    name: 'Fall 2024',
-                    courses: [
-                        major1Courses[formData.major1][0],
-                        { code: 'MATH 221', name: 'Calculus I', credits: 5, rating: 3.9 },
-                        { code: 'ENGLISH 100', name: 'Composition', credits: 3, rating: 4.2 }
-                    ]
-                },
-                {
-                    name: 'Spring 2025',
-                    courses: [
-                        major1Courses[formData.major1][1],
-                        { code: 'MATH 222', name: 'Calculus II', credits: 4, rating: 3.7 },
-                        { code: 'HISTORY 101', name: 'World History', credits: 3, rating: 4.4 }
-                    ]
-                },
-                {
-                    name: 'Fall 2025',
-                    courses: [
-                        major1Courses[formData.major1][2],
-                        { code: 'PHIL 101', name: 'Introduction to Philosophy', credits: 3, rating: 4.0 },
-                        { code: 'CHEM 103', name: 'General Chemistry', credits: 4, rating: 3.5 }
-                    ]
-                },
-                {
-                    name: 'Spring 2026',
-                    courses: [
-                        major1Courses[formData.major1][3],
-                        { code: 'PSYCH 202', name: 'Intro to Psychology', credits: 3, rating: 4.6 },
-                        { code: 'COMM 104', name: 'Public Speaking', credits: 3, rating: 4.1 }
-                    ]
-                }
-            ];
+        function showBackendPlan(plan) {
+    const grid = document.getElementById("scheduleGrid");
+    grid.innerHTML = "";
 
-            // Add more semesters if needed
-            const years = parseInt(formData.years);
-            const totalSemesters = years * 2;
+    plan.forEach(semester => {
+        const card = document.createElement('div');
+        card.className = 'semester-card';
 
-            while (semesters.length < totalSemesters) {
-                semesters.push({
-                    name: `Semester ${semesters.length + 1}`,
-                    courses: [
-                        { code: 'ELEC ' + (semesters.length + 1), name: 'Elective Course', credits: 3, rating: 4.0 }
-                    ]
-                });
-            }
+        const header = document.createElement('div');
+        header.className = 'semester-header';
+        header.textContent = semester.label;
+        card.appendChild(header);
 
-            return semesters.slice(0, totalSemesters);
-        }
+        const list = document.createElement('div');
+        list.className = 'course-list';
+
+        let totalCredits = 0;
+
+        semester.courses.forEach(c => {
+            const item = document.createElement('div');
+            item.className = 'course-item';
+            item.innerHTML = `
+                <div class="course-code">${c.id}</div>
+                <div class="course-name">${c.name}</div>
+                <div class="course-meta">${c.credits} credits</div>
+            `;
+            list.appendChild(item);
+            totalCredits += c.credits;
+        });
+
+        card.appendChild(list);
+
+        const total = document.createElement('div');
+        total.className = "semester-total";
+        total.textContent = `Total: ${totalCredits} credits`;
+        card.appendChild(total);
+
+        grid.appendChild(card);
+    });
+
+    document.getElementById("resultsContainer").classList.add("show");
+}
+
+        
+
 
         function createSemesterCard(semester) {
             const card = document.createElement('div');
