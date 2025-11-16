@@ -31,6 +31,17 @@ public class ApiServer {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
 
+            // ⭐⭐⭐ ADD CORS — MUST BE FIRST ⭐⭐⭐
+            exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+            exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type");
+
+            // OPTIONS preflight request  —— browsers send this automatically
+            if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
+                exchange.sendResponseHeaders(204, -1); // No content
+                return;
+            }
+
             if (!exchange.getRequestMethod().equalsIgnoreCase("POST")) {
                 sendResponse(exchange, 405, "Method Not Allowed");
                 return;
@@ -51,7 +62,6 @@ public class ApiServer {
                 return;
             }
 
-
             StudentProfile profile = null;
             try {
                 profile = Json.toStudentProfile(json);
@@ -67,8 +77,18 @@ public class ApiServer {
             List<Semester> plan = optimizer.generatePlan(profile, allCourses);
 
             String jsonResponse = Json.planToJson(plan);
-            sendResponse(exchange, 200, jsonResponse);
+            sendJsonResponse(exchange, 200, jsonResponse);
         }
+    }
+
+    // JSON response with CORS header
+    private static void sendJsonResponse(HttpExchange exchange, int status, String json) throws IOException {
+        byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
+        exchange.getResponseHeaders().add("Content-Type", "application/json");
+        exchange.sendResponseHeaders(status, bytes.length);
+        OutputStream os = exchange.getResponseBody();
+        os.write(bytes);
+        os.close();
     }
 
     private static void sendResponse(HttpExchange exchange, int status, String text) throws IOException {
