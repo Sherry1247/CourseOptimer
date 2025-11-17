@@ -170,13 +170,8 @@ This project is licensed under the [MIT License](LICENSE) - see the LICENSE file
 
 ## 👥 Team
 
-- [Sherry](https://github.com/Sherry1247) - Project Lead
+- Mckenna Xiang, Siqi Dai, Yinan Feng
 
-## 📧 Contact
-
-- **GitHub**: [@Sherry1247](https://github.com/Sherry1247)
-- **Email**: [Your email]
-- **Project Link**: [https://github.com/Sherry1247/CourseOptimizer](https://github.com/Sherry1247/CourseOptimizer)
 
 ## 🙏 Acknowledgments
 
